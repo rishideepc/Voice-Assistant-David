@@ -9,7 +9,6 @@ import random
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-#print(voices[0].id)
 engine.setProperty('voice', voices[0].id)
 
 def speak(audio):
@@ -64,17 +63,14 @@ def takeCommand():
     try:
         print("Recognizing...")    
         query = r.recognize_google(audio, language='en-in')
-        #print(f"User said: {query}\n")
 
-    except Exception as e:
-        # print(e)    
+    except Exception as e: 
         print("Could you say that again please...")  
         return "None"
     return query
 
 
 if __name__ == "__main__":
-    #wishMe()
     while True:
         query = takeCommand().lower()
            
@@ -138,17 +134,26 @@ if __name__ == "__main__":
         elif 'open youtube' in query:
             speak("Sure Sir!")
             webbrowser.open("youtube.com")
+            
+        elif 'launch youtube' in query:
+            speak("Sure Sir!")
+            webbrowser.open("youtube.com")    
 
         elif 'open google' in query:
             speak("Sure Sir!")
-            webbrowser.open("google.com") 
+            webbrowser.open("google.com")
+            
+        elif 'launch google' in query:
+            speak("Sure Sir!")
+            webbrowser.open("google.com")
 
         elif 'open wikipedia' in query:
             speak("Sure Sir!")
             webbrowser.open("wikipedia.org")
-
-        elif 'semester break' in query:
-            speak("Sir, your semester break was three weeks long. I know you're saying this to annoy your friend Sayam. ")
+            
+        elif 'launch wikipedia' in query:
+            speak("Sure Sir!")
+            webbrowser.open("wikipedia.org")
 
         elif 'open stackoverflow' in query:
             webbrowser.open("stackoverflow.com")
@@ -189,6 +194,10 @@ if __name__ == "__main__":
             os.startfile(codePath)
 
         elif 'open VS code' in query:
+            codePath='C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe'
+            os.startfile(codePath)
+            
+        elif 'launch VS code' in query:
             codePath='C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe'
             os.startfile(codePath)
         
@@ -246,7 +255,7 @@ if __name__ == "__main__":
             ans2=takeCommand().lower()
             pywhatkit.sendwhatmsg('+91 xxxxxxxxxx', ans , ans1, ans2)
 
-        elif 'send a text to mum' in query:
+        elif 'send a text to --whoever--' in query:
             speak("What do you want send Sir?")
             ans=takeCommand().lower()
             speak("When do you want to send the message Sir?")
